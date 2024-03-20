@@ -23,7 +23,7 @@ jobs:
       - name: Generate release tag
         id: tag
         run: |
-          echo "::set-output name=release_tag::Test_$(date +"%Y.%m.%d_%H-%M")"
+          echo "::set-output name=release_tag::Test_$(TZ=Asia/Taipei date +"%Y.%m.%d_%H-%M")"
       - name: Github Release
         uses: softprops/action-gh-release@v2.0.2
         env:
