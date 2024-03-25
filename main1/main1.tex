@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+% 頁面設置
+\usepackage[right=20mm, bottom=30mm, left=20mm]{geometry} % 頁面邊界
+% \usepackage{multicol} % 頁面分欄
+% \setlength{\columnsep}{1pt} % 欄間距
+\usepackage{float} % 浮動物件 (圖表 H)
+
+% 字體設定
+\usepackage{type1cm} % 設定字體大小
+\usepackage{xeCJK} % 中文字體
+\def \nosystemfont {} % 關閉系統字型
+
+\title{簡單的 LaTeX 文件}
+\author{你的名字}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{介紹}
+這是一個簡單的 LaTeX 文件。
+
+\section{主要內容}
+在這裡撰寫你的主要內容。
+
+% 摘要
+\input{Appedix/appedix.tex}
+
+\end{document}

@@ -17,8 +17,9 @@ jobs:
       - name: Compile LaTex document
         uses: xu-cheng/latex-action@3.2.0
         with:
-          root_file:
+          root_file: |
             main/main.tex
+            main1/main1.tex
           latexmk_use_xelatex: true
       - name: Generate release tag
         id: tag
@@ -30,5 +31,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
-          files:
+          files: |
             main.pdf
+            main1.pdf
