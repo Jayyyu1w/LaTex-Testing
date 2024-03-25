@@ -18,7 +18,7 @@ jobs:
         uses: xu-cheng/latex-action@3.2.0
         with:
           root_file:
-            main.tex
+            main/main.tex
           latexmk_use_xelatex: true
       - name: Generate release tag
         id: tag
