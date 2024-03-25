@@ -1,0 +1,34 @@
+name: Release Compiled PDF
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build_release_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4.1.1
+      - name: Compile LaTex document
+        uses: xu-cheng/latex-action@3.2.0
+        with:
+          root_file:
+            main.tex
+          latexmk_use_xelatex: true
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::Test_$(TZ=Asia/Taipei date +"%Y.%m.%d_%H-%M")"
+      - name: Github Release
+        uses: softprops/action-gh-release@v2.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files:
+            main.tex
